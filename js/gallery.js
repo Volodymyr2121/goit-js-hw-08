@@ -81,16 +81,12 @@ const markup = images.map(({preview, original, description}) => {
 const list = document.querySelector(".gallery");
 list.innerHTML = markup;
 
-list.addEventListener("click", function(event) {
-    event.preventDefault();
-    if (event.target.classList.contains('gallery-image')) {
-    const largImage = event.target.dataset.source;
-        console.log(largImage)
-        
-        const instance = basicLightbox.create(`
-    <img src="${largImage}" width="800" height="600">
-`)
+list.addEventListener("click", event => {
+  event.preventDefault();
+  const link = event.target.dataset.source
 
+  const instance = basicLightbox.create(`
+    <img src="${link}" width="800" height="600">
+`)
 instance.show()
-}
 })
